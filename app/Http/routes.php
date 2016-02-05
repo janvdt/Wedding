@@ -37,16 +37,12 @@ Route::group(['middleware' => ['oauth']], function () {
 	}]);
 });
 
-Route::post('oauth/access_token', function() {
- return Response::json(Authorizer::issueAccessToken());
-});
 
-Route::get('/register',function(){$user = new App\User();
-	$user->name='test user';
-	$user->email='test@test.com';
-	$user->password = \Illuminate\Support\Facades\Hash::make('password');
-	$user->save();
- 
-});
+	Route::post('oauth/access_token', function() {
+ 		return Response::json(Authorizer::issueAccessToken());
+	});
+
+
+Route::post('/register', 'UserController@register');
 
 

@@ -21,6 +21,11 @@
 
 require __DIR__.'/../bootstrap/autoload.php';
 
+header('Access-Control-Allow-Origin: http://localhost');
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS'); 
+header('Access-Control-Allow-Headers: Authorization,Origin, Content-Type, X-Auth-Token,X-Requested-With');
+
 /*
 |--------------------------------------------------------------------------
 | Turn On The Lights
