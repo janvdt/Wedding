@@ -26,15 +26,10 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['oauth']], function () {
-    
-    Route::get('api', ['before' => 'oauth', function() {
-	// return the protected resource
-	//echo “success authentication”;
-	$user_id = Authorizer::getResourceOwnerId(); // the token user_id
-	$user = \App\User::find($user_id);// get the user data from database
-	return Response::json($user);
-	}]);
+//Everything in this group the user has to be authenticated.
+Route::group(['middleware' => ['oauth'],'before' => ['oauth']], function (){
+	//route to get currentuser
+	Route::get('/users/current','UserController@current');
 });
 
 
@@ -43,6 +38,6 @@ Route::group(['middleware' => ['oauth']], function () {
 	});
 
 
-Route::post('/register', 'UserController@register');
+Route::post('/users/register', 'UserController@register');
 
 
