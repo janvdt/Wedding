@@ -33,6 +33,14 @@ return [
             'access_token_ttl' => 604800,
             'callback' => '\App\Verifier@verify'
             
+        ],
+
+        
+
+        'facebook_access_token' => [
+            'class'             =>  '\League\OAuth2\Server\Grant\FacebookGrant',
+            'access_token_ttl'  => 604800,
+            'callback'          => '\App\Verifier@verifyFacebook'
         ]
 
     ],
